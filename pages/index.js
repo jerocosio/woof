@@ -6,6 +6,10 @@ export default function Home() {
       <Head>
         <title>Woof POC from The Office using One Signal</title>
         <link rel="icon" href="/favicon.ico" />
+        <script
+          src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+          async=""
+        ></script>
       </Head>
 
       <main className="flex flex-col items-center justify-center flex-1 w-full px-20 text-center">
@@ -33,10 +37,11 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <p>
-          Built using <a>Next.js</a>, styled with <a>Tailwind</a>, and deployed
-          to <a>Vercel</a>.
+      <footer className="flex items-center justify-center w-full text-white bg-red-500">
+        <p className="p-2">
+          Built using <a className="underline">Next.js</a>, styled with{" "}
+          <a className="underline">Tailwind</a>, and deployed to{" "}
+          <a className="underline">Vercel</a>.
         </p>
       </footer>
     </div>
