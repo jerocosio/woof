@@ -33,5 +33,5 @@ export default function handler(req, res) {
 
   request.write(JSON.stringify(data));
   request.end();
-  res.status(200).json(JSON.stringify(data));
+  res.status(200);
 }
