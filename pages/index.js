@@ -36,10 +36,8 @@ export default function Home() {
         </h1>
 
         <p className="mt-3 text-2xl">
-          Get started by editing{" "}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
+          You'll receive a notification everytime onw of your friends or
+          yourself wants to make a Woof!
         </p>
 
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
