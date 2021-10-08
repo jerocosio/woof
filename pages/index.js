@@ -1,6 +1,24 @@
 import Head from "next/head";
+import React, { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+      OneSignal.init({
+        appId: "b40b7cc7-13dc-4662-8b48-efa668f9b72a",
+        notifyButton: {
+          enable: true,
+        },
+
+        allowLocalhostAsSecureOrigin: true,
+      });
+    });
+
+    return () => {
+      window.OneSignal = undefined;
+    };
+  }, []);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
