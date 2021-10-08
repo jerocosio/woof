@@ -60,16 +60,43 @@ export default function Home() {
           send a <span className="font-bold text-orange-500">WUPHFs</span> back
           🐶!
         </h2>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <div className="p-6 border-2 rounded-md">
-            <p>What's your name?</p>
-            <form onSubmit={sendWuphf}>
-              <label htmlFor="name">Name</label>
-              <input id="name" type="text" autoComplete="name" required />
-              <button type="submit">Send WUPHF</button>
-            </form>
-          </div>
+        <div class="w-full max-w-xs mt-8">
+          <form
+            class="bg-white border-2 rounded px-8 pt-6 pb-8 mb-4"
+            onSubmit={sendWuphf}
+          >
+            <div class="mb-4">
+              <label class="block mb-2" for="name">
+                What's your name?
+              </label>
+              <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name"
+                type="text"
+                placeholder="Name"
+                type="text"
+                autoComplete="name"
+                required
+              />
+            </div>
+            <div class="flex items-center justify-between">
+              <button
+                class="bg-orange-500 hover:bg-orange-700 w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                Send WUPHF!
+              </button>
+            </div>
+          </form>
+          <p class="text-center text-gray-500 text-xs">
+            Inspired by this great idea{" "}
+            <a
+              href="https://www.youtube.com/watch?v=bjaZtXRfJ5o"
+              className="underline"
+            >
+              from The Office
+            </a>
+          </p>
         </div>
       </main>
 
