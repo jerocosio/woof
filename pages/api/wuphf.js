@@ -1,4 +1,4 @@
-export default function handler(req, res) {
+export default async function handler(req, res) {
   let headers = {
     "Content-Type": "application/json; charset=utf-8",
     Authorization: `Basic ${process.env.SECRET_KEY}`,
@@ -17,21 +17,16 @@ export default function handler(req, res) {
     },
     included_segments: ["Subscribed Users"],
   };
-
-  let https = require("https");
-  var request = https.request(options, function (res) {
-    res.on("data", function (data) {
-      console.log("Response:");
-      console.log(JSON.parse(data));
-    });
-  });
-
-  request.on("error", function (e) {
-    console.log("ERROR One Signal:");
-    console.log(e);
-  });
-
-  request.write(JSON.stringify(data));
-  request.end();
-  res.status(200);
+  const notification = await fetch(
+    "https://onesignal.com/api/v1/notifications",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+        Authorization: `Basic ${process.env.SECRET_KEY}`,
+      },
+      body: JSON.stringify(data),
+    }
+  );
+  res.status(200).json(notification);
 }
