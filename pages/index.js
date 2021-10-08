@@ -1,7 +1,8 @@
 import Head from "next/head";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Home() {
+  const [resultApi, setResultApi] = useState();
   useEffect(() => {
     window.OneSignal = window.OneSignal || [];
     OneSignal.push(function () {
@@ -32,8 +33,13 @@ export default function Home() {
     });
 
     const result = await res.json();
+
+    if (result) {
+      setResultApi(result);
+    }
     console.log(result);
   };
+  console.log(resultApi);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <Head>
@@ -60,17 +66,25 @@ export default function Home() {
           send a <span className="font-bold text-orange-500">WUPHFs</span> back
           🐶!
         </h2>
-        <div class="w-full max-w-xs mt-8">
+        <div className="w-full max-w-xs mt-8">
+          {resultApi && (
+            <div className="p-4 my-4 bg-green-100 rounded-md">
+              <p>{`Message sent to all the WUPHF friends`}</p>
+            </div>
+          )}
           <form
-            class="bg-white border-2 rounded px-8 pt-6 pb-8 mb-4"
+            className="px-8 pt-6 pb-8 mb-4 bg-white border-2 rounded"
             onSubmit={sendWuphf}
           >
-            <div class="mb-4">
-              <label class="block mb-2" for="name">
+            <div className="mb-4">
+              <label className="block mb-2" htmlFor="name">
                 What's your name?
               </label>
               <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                onFocus={() => {
+                  setResultApi();
+                }}
+                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                 id="name"
                 type="text"
                 placeholder="Name"
@@ -79,16 +93,16 @@ export default function Home() {
                 required
               />
             </div>
-            <div class="flex items-center justify-between">
+            <div className="flex items-center justify-between">
               <button
-                class="bg-orange-500 hover:bg-orange-700 w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="w-full px-4 py-2 font-bold text-white bg-orange-500 rounded hover:bg-orange-700 focus:outline-none focus:shadow-outline"
                 type="submit"
               >
                 Send WUPHF!
               </button>
             </div>
           </form>
-          <p class="text-center text-gray-500 text-xs">
+          <p className="text-xs text-center text-gray-500">
             Inspired by this great idea{" "}
             <a
               href="https://www.youtube.com/watch?v=bjaZtXRfJ5o"
@@ -97,7 +111,7 @@ export default function Home() {
               from The Office
             </a>
           </p>
-          <p class="text-center text-gray-500 text-xs">
+          <p className="text-xs text-center text-gray-500">
             You can find the whole source code{" "}
             <a href="https://github.com/jerocosio/woof" className="underline">
               here
