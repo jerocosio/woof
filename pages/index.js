@@ -45,16 +45,16 @@ export default function Home() {
         ></script>
       </Head>
 
-      <main className="flex flex-col items-center justify-center flex-1 w-full px-20 text-center">
+      <main className="flex flex-col items-center justify-center flex-1 w-full px-4 text-center lg:px-20">
         <div>
           <img src="/logo.jpg" />
         </div>
-        <h1 className="text-5xl font-bold">
+        <h1 className="text-2xl font-bold lg:text-5xl">
           Subscribe now and receive{" "}
           <span className="text-orange-500">WUPHFs</span> from everyone 🐶!
         </h1>
 
-        <h2 className="mt-3 text-2xl">
+        <h2 className="mt-3 text-md lg:text-2xl">
           You'll receive a notification everytime someone sends a notification
           through this site! Get to know your new friends and don't forget to
           send a <span className="font-bold text-orange-500">WUPHFs</span> back
@@ -97,10 +97,17 @@ export default function Home() {
               from The Office
             </a>
           </p>
+          <p class="text-center text-gray-500 text-xs">
+            You can find the whole source code{" "}
+            <a href="https://github.com/jerocosio/woof" className="underline">
+              here
+            </a>
+            .
+          </p>
         </div>
       </main>
 
-      <footer className="flex items-center justify-center w-full text-white bg-blue-800">
+      <footer className="flex items-center justify-center w-full mt-6 text-xs text-white bg-blue-800 lg:text-base">
         <p className="p-2">
           Inspired by The Office, built using{" "}
           <a className="underline" href="https://nextjs.org/">
