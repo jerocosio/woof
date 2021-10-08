@@ -1,12 +1,10 @@
 export default function handler(req, res) {
-  console.log("key: ", process.env.SECRET_KEY);
   let headers = {
     "Content-Type": "application/json; charset=utf-8",
     Authorization: `Basic ${process.env.SECRET_KEY}`,
   };
   var options = {
     host: "onesignal.com",
-    port: 443,
     path: "/api/v1/notifications",
     method: "POST",
     headers: headers,
@@ -21,19 +19,19 @@ export default function handler(req, res) {
   };
 
   let https = require("https");
-  var req = https.request(options, function (res) {
+  var request = https.request(options, function (res) {
     res.on("data", function (data) {
       console.log("Response:");
       console.log(JSON.parse(data));
     });
   });
 
-  req.on("error", function (e) {
-    console.log("ERROR:");
+  request.on("error", function (e) {
+    console.log("ERROR One Signal:");
     console.log(e);
   });
 
-  req.write(JSON.stringify(data));
-  req.end();
-  res.status(200).json({ user: "Ada Lovelace" });
+  request.write(JSON.stringify(data));
+  request.end();
+  res.status(200);
 }
