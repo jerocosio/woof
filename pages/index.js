@@ -6,7 +6,7 @@ export default function Home() {
     window.OneSignal = window.OneSignal || [];
     OneSignal.push(function () {
       OneSignal.init({
-        appId: "b40b7cc7-13dc-4662-8b48-efa668f9b72a",
+        appId: "8f9b57f7-4cd8-4eff-ad18-1dfd18f7ce17",
         notifyButton: {
           enable: true,
         },
